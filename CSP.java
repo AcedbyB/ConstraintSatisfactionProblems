@@ -74,6 +74,7 @@ public abstract class CSP {
         public Variable v2;
 
         public abstract boolean satisfied();
+
     }
 
     public class NotEqualConstraint extends Constraint {

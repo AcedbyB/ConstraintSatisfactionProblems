@@ -3,42 +3,6 @@ import java.util.Date;
 
 public class AustraliaMapCSP extends CSP {
 
-    public class stateVariable extends Variable {
-
-        public stateVariable(String name, String color) {
-            this.name = name;
-            value = color;
-            domain = new ArrayList<String>();
-            domain.add("green");
-            domain.add("red");
-            domain.add("blue");
-        }
-
-        @Override
-        public boolean equals(Variable v2) {
-            if (v2.value.equals(this.value) && !this.value.equals("")) return true;
-
-            else return false;
-        }
-
-        public boolean unAssigned() {
-            if (this.value.equals("")) return true;
-            else return false;
-        }
-
-        public void takeOnValue(Object color) {
-            this.value = color;
-        }
-
-        public void removeValue() {
-            this.value = "";
-        }
-
-        public void printSolutionValue() {
-            System.out.println(this.name + ": " + this.value);
-        }
-    }
-
     public AustraliaMapCSP() {
         Variable WA = new stateVariable("WA", "");
         Variable NT = new stateVariable("NT", "");
@@ -75,9 +39,45 @@ public class AustraliaMapCSP extends CSP {
         long start = new Date().getTime();
         solver.solve(csp);
         long end = new Date().getTime();
-        System.out.format("time: %.3f secs\n", (end-start)/1000.0);
-        for(Variable v: csp.variables) {
+        System.out.format("time: %.3f secs\n", (end - start) / 1000.0);
+        for (Variable v : csp.variables) {
             v.printSolutionValue();
+        }
+    }
+
+    public class stateVariable extends Variable {
+
+        public stateVariable(String name, String color) {
+            this.name = name;
+            value = color;
+            domain = new ArrayList<String>();
+            domain.add("green");
+            domain.add("red");
+            domain.add("blue");
+        }
+
+        @Override
+        public boolean equals(Variable v2) {
+            if (v2.value.equals(this.value) && !this.value.equals("")) return true;
+
+            else return false;
+        }
+
+        public boolean unAssigned() {
+            if (this.value.equals("")) return true;
+            else return false;
+        }
+
+        public void takeOnValue(Object color) {
+            this.value = color;
+        }
+
+        public void removeValue() {
+            this.value = "";
+        }
+
+        public void printSolutionValue() {
+            System.out.println(this.name + ": " + this.value);
         }
     }
 }

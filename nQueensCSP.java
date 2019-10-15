@@ -61,7 +61,7 @@ public class nQueensCSP extends CSP {
     }
 
     public static void main(String[] args) {
-        System.out.println("N-Queens Problem (AIMA 3.2.1)");
+        System.out.println("N-Queens Problem ( AIMA 3.2.1 )");
         System.out.println("What is the number of queens you want?");
         Scanner sc = new Scanner(System.in);
         numberOfQueens = sc.nextInt();
